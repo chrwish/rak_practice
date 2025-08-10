@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-qrcode header-icon"></i>
+                <h1>QR Code Generator</h1>
+                <p>Generate beautiful QR codes instantly</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="generator-section">
+                <div class="input-section">
+                    <h2><i class="fas fa-edit"></i> Create Your QR Code</h2>
+                    
+                    <form id="qrForm" class="qr-form">
+                        <div class="form-group">
+                            <label for="textInput">
+                                <i class="fas fa-keyboard"></i>
+                                Text or URL
+                            </label>
+                            <textarea 
+                                id="textInput" 
+                                placeholder="Enter text, URL, email, or any data..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="options-grid">
+                            <div class="form-group">
+                                <label for="sizeSelect">
+                                    <i class="fas fa-expand"></i>
+                                    Size
+                                </label>
+                                <select id="sizeSelect">
+                                    <option value="128">Small (128px)</option>
+                                    <option value="256" selected>Medium (256px)</option>
+                                    <option value="512">Large (512px)</option>
+                                    <option value="1024">Extra Large (1024px)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="errorLevel">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Error Correction
+                                </label>
+                                <select id="errorLevel">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formatSelect">
+                                    <i class="fas fa-file-image"></i>
+                                    Format
+                                </label>
+                                <select id="formatSelect">
+                                    <option value="png" selected>PNG</option>
+                                    <option value="svg">SVG</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="color-section">
+                            <h3><i class="fas fa-palette"></i> Customize Colors</h3>
+                            <div class="color-grid">
+                                <div class="form-group">
+                                    <label for="darkColor">
+                                        <i class="fas fa-circle" style="color: #000;"></i>
+                                        Foreground Color
+                                    </label>
+                                    <input type="color" id="darkColor" value="#000000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lightColor">
+                                        <i class="fas fa-circle" style="color: #fff; text-shadow: 0 0 1px #000;"></i>
+                                        Background Color
+                                    </label>
+                                    <input type="color" id="lightColor" value="#ffffff">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="generate-btn">
+                            <i class="fas fa-magic"></i>
+                            Generate QR Code
+                        </button>
+                    </form>
+                </div>
+
+                <div class="output-section">
+                    <h2><i class="fas fa-qrcode"></i> Your QR Code</h2>
+                    
+                    <div id="qrResult" class="qr-result">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>Your QR code will appear here</p>
+                        </div>
+                    </div>
+
+                    <div id="downloadSection" class="download-section" style="display: none;">
+                        <button id="downloadBtn" class="download-btn">
+                            <i class="fas fa-download"></i>
+                            Download QR Code
+                        </button>
+                        <button id="copyBtn" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy to Clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2><i class="fas fa-star"></i> Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Instant Generation</h3>
+                        <p>Generate QR codes in real-time with no delays</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Friendly</h3>
+                        <p>Fully responsive design that works on all devices</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Customizable</h3>
+                        <p>Choose colors, sizes, and error correction levels</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-download"></i>
+                        <h3>Multiple Formats</h3>
+                        <p>Download as PNG or SVG format</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 QR Code Generator. Built with Node.js and Express.</p>
+        </footer>
+    </div>
+
+    <div id="loading" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Generating QR Code...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
